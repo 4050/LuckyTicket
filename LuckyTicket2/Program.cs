@@ -14,6 +14,7 @@ namespace LuckyTicket
 
             while (true)
             {
+                Console.WriteLine("Введите номер билета:");
                 ticketNumber = Console.ReadLine();
                 if (ticketNumber.Length < 4 || ticketNumber.Length > 8)
                 {
