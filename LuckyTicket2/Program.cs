@@ -6,7 +6,6 @@ namespace LuckyTicket
     {
         static void Main(string[] args)
         {
-
             do
             {
                 Console.WriteLine("Введите номер билета:");
@@ -16,15 +15,13 @@ namespace LuckyTicket
 
                 Console.WriteLine("Проверить еще один билет? Y/N");
 
-
             } while (Console.ReadLine().ToUpper() == "Y");
-
         }
 
-        static string CheckNumberDigits (string ticketNumber) {
+        static string CheckNumberDigits (string ticketNumber) 
+        {
             while(true)
             {
-
                 if (ticketNumber.Length < 4 || ticketNumber.Length > 8)
                 {
                     Console.WriteLine("Кол-во чисел должно быть от 4 до 8");
@@ -36,8 +33,8 @@ namespace LuckyTicket
             } 
         }
 
-        static void LuckyTicketCheck (string verifiedTicket) {
-
+        static void LuckyTicketCheck (string verifiedTicket) 
+        {
             int sum1 = 0;
             int sum2 = 0;
             int[] ticketDigits = new int[verifiedTicket.Length];
@@ -71,7 +68,6 @@ namespace LuckyTicket
             {
                 Console.WriteLine("YOU ARE NOT LUCKY!");
             }
-
         }
 
         static int[] Insert(int[] array)
