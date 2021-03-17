@@ -7,28 +7,44 @@ namespace LuckyTicket
         static void Main(string[] args)
         {
 
-            string ticketNumber;
-            int sum1 = 0;
-            int sum2 = 0;
-
-            while (true)
+            do
             {
                 Console.WriteLine("Введите номер билета:");
-                ticketNumber = Console.ReadLine();
+                string ticketNumber = Console.ReadLine();
+                string verifiedTicket = CheckNumberDigits(ticketNumber);
+                LuckyTicketCheck(verifiedTicket);
+
+                Console.WriteLine("Проверить еще один билет? Y/N");
+
+
+            } while (Console.ReadLine().ToUpper() == "Y");
+
+        }
+
+        static string CheckNumberDigits (string ticketNumber) {
+            while(true)
+            {
+
                 if (ticketNumber.Length < 4 || ticketNumber.Length > 8)
                 {
                     Console.WriteLine("Кол-во чисел должно быть от 4 до 8");
                 }
                 else
                 {
-                    break;
+                    return ticketNumber;
                 }
-            }
+            } 
+        }
 
-            int[] ticketDigits = new int[ticketNumber.Length];
+        static void LuckyTicketCheck (string verifiedTicket) {
+
+            int sum1 = 0;
+            int sum2 = 0;
+            int[] ticketDigits = new int[verifiedTicket.Length];
+
             for (int i = 0; i < ticketDigits.Length; i++)
             {
-                ticketDigits[i] = Convert.ToInt32(Char.GetNumericValue(ticketNumber[i]));
+                ticketDigits[i] = Convert.ToInt32(Char.GetNumericValue(verifiedTicket[i]));
             }
 
             if ((ticketDigits.Length % 2) != 0)
@@ -56,7 +72,6 @@ namespace LuckyTicket
                 Console.WriteLine("YOU ARE NOT LUCKY!");
             }
 
-            Console.ReadLine();
         }
 
         static int[] Insert(int[] array)
