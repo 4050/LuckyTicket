@@ -24,6 +24,7 @@ namespace LuckyTicket
                     break;
                 }
             }
+
             int[] ticketDigits = new int[ticketNumber.Length];
             for (int i = 0; i < ticketDigits.Length; i++)
             {
