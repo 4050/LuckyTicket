@@ -8,8 +8,7 @@ namespace LuckyTicket
         {
             do
             {
-                Console.WriteLine("Введите номер билета:");
-                string ticketNumber = Console.ReadLine();
+                string ticketNumber = valueInput();
                 string verifiedTicket = CheckNumberDigits(ticketNumber);
                 LuckyTicketCheck(verifiedTicket);
 
@@ -18,19 +17,36 @@ namespace LuckyTicket
             } while (Console.ReadLine().ToUpper() == "Y");
         }
 
+        static bool IsDigitsOnly(string str)
+        {
+            foreach (char c in str)
+            {
+                if (c < '0' || c > '9')
+                    return false;
+            }
+
+            return true;
+        }
+        static string valueInput()
+        {
+            Console.WriteLine("Введите номер билета:");
+            string ticketNumber = Console.ReadLine();
+            if (!IsDigitsOnly(ticketNumber))
+            {
+                Console.WriteLine("Строка должна содержать только числа!");
+                ticketNumber = valueInput();
+            }
+            return ticketNumber;
+        }
+
         static string CheckNumberDigits (string ticketNumber) 
         {
-            while(true)
-            {
                 if (ticketNumber.Length < 4 || ticketNumber.Length > 8)
                 {
                     Console.WriteLine("Кол-во чисел должно быть от 4 до 8");
+                    ticketNumber = valueInput();
                 }
-                else
-                {
-                    return ticketNumber;
-                }
-            } 
+                 return ticketNumber;
         }
 
         static void LuckyTicketCheck (string verifiedTicket) 
